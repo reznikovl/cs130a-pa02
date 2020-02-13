@@ -27,7 +27,7 @@ void Quash::insert(int i) {
 void Quash::lookup(int i) {
     HashElement* check = this->lookupAddress(i);
     if(check == NULL)
-        cout << "item not found." << endl;
+        cout << "item not found" << endl;
     else
         cout << "item found, count = " << check->count << endl;
 }
@@ -57,7 +57,7 @@ void Quash::deleteMin() {
 void Quash::deleteElement(int i) {
     HashElement* check = this->lookupAddress(i);
     if(check == NULL) {
-        cout << "item not present in table" << endl;
+        cout << "item not present in the table" << endl;
         return;
     }
     if(check->count > 1) {
