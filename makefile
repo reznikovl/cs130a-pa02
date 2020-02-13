@@ -2,13 +2,10 @@ CXX = g++
 CXXFLAGS = -Wall -Wno-uninitialized -std=c++11
 BINARIES = prog1.out
 
-prog1: Quash.o Main.o
-	$(CXX) $(CXXFLAGS) -o prog1.out Quash.o Main.o 
+all: prog1
 
-Quash.o: Quash.cpp Quash.h Element.h
-	$(CXX) $(CXXFLAGS) -c $^ 
+prog1: Quash.cpp Main.cpp
+	$(CXX) $(CXXFLAGS) -o prog1.out Quash.cpp Main.cpp 
 
-Main.o: Main.cpp
-	$(CXX) $(CXXFLAGS) -c $^ 
 clean:
 	/bin/rm -f $(BINARIES) *.o
