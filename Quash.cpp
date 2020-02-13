@@ -51,7 +51,7 @@ void Quash::deleteMin() {
     delete myHeap[myHeap.size()-1];
     myHeap.pop_back();
     bubbleDown(0);
-    cout << "min item " << currmin << " successfuly deleted" << endl;
+    cout << "min item " << currmin << " successfully deleted" << endl;
 }
 
 void Quash::deleteElement(int i) {
