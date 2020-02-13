@@ -44,7 +44,7 @@ void Quash::deleteMin() {
 
     if(min->count > 1) {
         min->count--;
-        cout << "count decremented, new count = " << min->count << endl;
+        cout << "min item = " << currmin << ", count decremented, new count = " << min->count << endl;
         return;
     }
     this->heapSwap(0, myHeap.size()-1);
