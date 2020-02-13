@@ -12,7 +12,7 @@ void Quash::insert(int i) {
     if(current) {
         current->count++;
         current->otherAddress->count++;
-        cout << "item already present, count = " << current->count << endl;
+        cout << "item successfully inserted, count = " << current->count << endl;
         return;
     }
 
