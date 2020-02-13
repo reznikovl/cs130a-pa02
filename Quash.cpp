@@ -39,8 +39,8 @@ void Quash::deleteMin() {
     }
 
     HeapElement* min = myHeap[0];
+    int currmin = min->data;
     deleteFromHash(min->data);
-    cout << "min item = " << min->data << ", ";
 
     if(min->count > 1) {
         min->count--;
@@ -51,7 +51,7 @@ void Quash::deleteMin() {
     delete myHeap[myHeap.size()-1];
     myHeap.pop_back();
     bubbleDown(0);
-    cout << "min item " << min->data << " successfuly deleted" << endl;
+    cout << "min item " << currmin << " successfuly deleted" << endl;
 }
 
 void Quash::deleteElement(int i) {
