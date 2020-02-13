@@ -2,8 +2,6 @@ CXX = g++
 CXXFLAGS = -Wall -Wno-uninitialized -g --std=c++11
 BINARIES = prog1.out
 
-all: ${BINARIES}
-
 prog1.out: Quash.h Element.h Quash.o Main.o
 	$(CXX) $(CXXFLAGS)  $^ -o $@
 
