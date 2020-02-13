@@ -2,8 +2,8 @@ CXX = g++
 CXXFLAGS = -Wall -Wno-uninitialized -g --std=c++11
 BINARIES = prog1.out
 
-prog1.out: Quash.h Element.h Quash.o Main.o
-	$(CXX) $(CXXFLAGS)  $^ -o $@
+prog1: Quash.h Element.h Quash.o Main.o
+	$(CXX) $(CXXFLAGS)  $^ -o prog1.out
 
 Quash.o: Quash.cpp
 	$(CXX) $(CXXFLAGS)  $^ -c
