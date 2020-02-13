@@ -16,7 +16,7 @@ void Quash::insert(int i) {
         return;
     }
 
-    HeapElement* toInsert = new HeapElement(i, myHeap.size()-1);
+    HeapElement* toInsert = new HeapElement(i, myHeap.size());
     myHeap.push_back(toInsert);
     HeapElement* temp = this->bubbleUp(myHeap.size()-1);
 
@@ -48,6 +48,7 @@ void Quash::deleteMin() {
         return;
     }
     this->heapSwap(0, myHeap.size()-1);
+    delete myHeap[myHeap.size()-1];
     myHeap.pop_back();
     bubbleDown(0);
     cout << "min item " << min->data << " successfuly deleted" << endl;
@@ -72,9 +73,10 @@ void Quash::deleteElement(int i) {
     int currPos = currentHeap->positionInArray;
 
     heapSwap(currPos, myHeap.size()-1);
+    delete myHeap[myHeap.size()-1];
     myHeap.pop_back();
 
-    if(i > myHeap[(currPos-1)/2]->data) {
+    if(currPos == 0 || myHeap[currPos]->data > myHeap[(currPos-1)/2]->data) {
         bubbleDown(currPos);
     }
     else {
@@ -86,7 +88,7 @@ void Quash::deleteElement(int i) {
 
 void Quash::print() {
     for(vector<HeapElement*>::iterator ptr = myHeap.begin(); ptr != myHeap.end(); ptr++) {
-        cout << (*ptr)->data;
+        cout << (*ptr)->data << " ";
     }
     cout << endl;
 }
@@ -131,16 +133,18 @@ HeapElement* Quash::bubbleUp(int index) {
         return myHeap[index];
     }
     int parent = (index-1)/2;
-    if(myHeap[parent]->data < myHeap[index]->data) {
+    if(myHeap[parent]->data > myHeap[index]->data) {
         heapSwap(parent, index);
         return bubbleUp(parent);
     }
     return myHeap[index];
 }
 
-HeapElement* Quash::bubbleDown(int index) {
-    if(index*2 > myHeap.size()-1)
+HeapElement* Quash::bubbleDown(size_t index) {
+    if(myHeap.size() == 0) return nullptr;
+    if(index*2+1 > myHeap.size()-1) {
         return myHeap[index];
+    }
     int parent = myHeap[index]->data;
     int leftChild = myHeap[index*2+1]->data;
     if(index*2+1 == myHeap.size()-1) {
@@ -172,9 +176,13 @@ void Quash::heapSwap(int index1, int index2) {
     myHeap[index2] = first;
 }
 
-int main() {
-    return 0;
+Quash::~Quash() {
+    delete[] myHash;
+    for(vector<HeapElement*>::iterator i = myHeap.begin(); i != myHeap.end(); i++) {
+        delete *i;
+    }
 }
+
 
 
 

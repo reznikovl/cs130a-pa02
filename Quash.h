@@ -5,6 +5,7 @@
 class Quash {
     public:
         Quash();
+        ~Quash();
         void insert(int i);
         void lookup(int i);
         void deleteMin();
@@ -20,7 +21,7 @@ class Quash {
         std::vector<HeapElement*> myHeap;
         //int lastIndex;
         HeapElement* bubbleUp(int index);
-        HeapElement* bubbleDown(int index);
+        HeapElement* bubbleDown(size_t index);
         void heapSwap(int index1, int index2);
 
 };
